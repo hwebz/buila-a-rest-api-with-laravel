@@ -24,3 +24,8 @@
 > ./vendor/bin/sail artisan make:model Customer --all
 
 > ./vendor/bin/sail artisan make:model Invoice --all
+
+
+### Prepare Cusomter & Invoice Factory & Seeder before migration
+
+> ./vendor/bin/sail artisan migrate:fresh --seed
