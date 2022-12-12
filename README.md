@@ -19,6 +19,8 @@
 
 > ./vendor/bin/sail up
 
-### Generate Customer model
+### Generate Customer & Invoice models
 
 > ./vendor/bin/sail artisan make:model Customer --all
+
+> ./vendor/bin/sail artisan make:model Invoice --all
