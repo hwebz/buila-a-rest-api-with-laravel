@@ -18,18 +18,20 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      * @example http://localhost/api/v1/customers?postalCode[lt]=82730
+     * @example http://localhost/api/v1/customers?postalCode[gt]=82730&includeInvoices=true
      */
     public function index(Request $request)
     {
         $filter = new CustomersFilter();
         $queryItems = $filter->transform($request); // ['column', 'operator', 'value']
+        $includeInvoices = $request->query('includeInvoices');
+        $customers = Customer::where($queryItems);
 
-        if (count($queryItems) == 0) {
-            return new CustomerCollection(Customer::paginate());
+        if ($includeInvoices) {
+            $customers = $customers->with('invoices');
         }
 
-        $customers = Customer::where($queryItems)->paginate();
-        return new CustomerCollection($customers->appends($request->query()));
+        return new CustomerCollection($customers->paginate()->appends($request->query()));
     }
 
     /**
@@ -58,9 +60,16 @@ class CustomerController extends Controller
      *
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
+     * @example http://localhost/api/v1/customers/3?postalCode[gt]=82730&includeInvoices=true
      */
-    public function show(Customer $customer)
+    public function show(Request $request, Customer $customer)
     {
+        $includeInvoices = $request->query('includeInvoices');
+
+        if ($includeInvoices) {
+            return new CustomerResource($customer->loadMissing('invoices'));
+        }
+
         return new CustomerResource($customer);
     }
 
