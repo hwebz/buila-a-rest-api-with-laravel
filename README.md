@@ -30,6 +30,8 @@
 
 > ./vendor/bin/sail artisan migrate:fresh --seed
 
-### Create V1\Customer resource
+### Create V1\Customer resource + collection
 
 > ./vendor/bin/sail artisan make:resource V1\CustomerResource
+
+> ./vendor/bin/sail artisan make:resource V1\CustomerCollection
