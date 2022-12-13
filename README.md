@@ -41,3 +41,7 @@
 > ./vendor/bin/sail artisan make:resource V1\InvoiceResource
 
 > ./vendor/bin/sail artisan make:resource V1\InvoiceCollection
+
+## Create StoreCustomerRequest to create new customer
+
+> ./vendor/bin/sail artisan make:request V1\StoreCustomerRequest
