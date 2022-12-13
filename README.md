@@ -45,3 +45,15 @@
 ## Create StoreCustomerRequest to create new customer
 
 > ./vendor/bin/sail artisan make:request V1\StoreCustomerRequest
+
+## Protecting Routes with Sanctum
+
+> ./vendor/bin/sail composer require laravel/sanctum
+
+> ./vendor/bin/sail artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+
+> ./vendor/bin/sail artisan migrate
+
+Go to http://localhost/setup to retrieve all 3 tokens and save it locally
+
+Use above token to authenticate /api/v1 endpoints with Bearer Token header
