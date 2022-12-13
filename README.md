@@ -29,3 +29,7 @@
 ### Prepare Cusomter & Invoice Factory & Seeder before migration
 
 > ./vendor/bin/sail artisan migrate:fresh --seed
+
+### Create V1\Customer resource
+
+> ./vendor/bin/sail artisan make:resource V1\CustomerResource
