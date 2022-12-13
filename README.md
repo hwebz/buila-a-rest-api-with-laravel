@@ -35,3 +35,9 @@
 > ./vendor/bin/sail artisan make:resource V1\CustomerResource
 
 > ./vendor/bin/sail artisan make:resource V1\CustomerCollection
+
+### Create V1\Invoice resource + collection
+
+> ./vendor/bin/sail artisan make:resource V1\InvoiceResource
+
+> ./vendor/bin/sail artisan make:resource V1\InvoiceCollection
